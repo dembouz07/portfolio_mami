@@ -14,49 +14,34 @@ export function Education() {
           id="education-title"
         />
 
-        <div className="relative mt-14 border-y border-[var(--line)]">
+        <div className="relative mt-14 grid gap-5 lg:grid-cols-2">
           {education.map((item, index) => (
-            <AnimatedReveal
-              key={item.degree}
-              direction="up"
-              delay={index * 0.08}
-              className="border-b border-[var(--line)] last:border-b-0"
-            >
-              <article className="grid gap-7 py-9 sm:py-11 md:grid-cols-[minmax(12rem,0.7fr)_minmax(0,1.3fr)] md:gap-x-10 lg:grid-cols-[minmax(15rem,0.8fr)_minmax(0,1.4fr)_auto] lg:gap-x-12 lg:py-14">
-                <div>
-                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[var(--accent)]">
-                    <CalendarDays className="size-4" aria-hidden="true" />
-                    <span>Période</span>
-                  </div>
-                  <p className="font-display mt-4 text-4xl font-extrabold leading-[0.98] tracking-[-0.06em] text-[var(--text)] sm:text-5xl lg:text-6xl">
-                    {item.period}
-                  </p>
+            <AnimatedReveal key={item.degree} direction={index % 2 === 0 ? "right" : "left"} delay={index * 0.08}>
+              <article className="group h-full rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-6 transition-[border-color,transform] hover:-translate-y-1 hover:border-[var(--accent)] sm:p-8 motion-reduce:transform-none">
+                <div className="flex items-start justify-between gap-5">
+                  <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--accent-soft)] text-[var(--accent)]">
+                    <GraduationCap className="size-6" aria-hidden="true" />
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--line)] px-3 py-1.5 text-xs font-bold text-[var(--accent)]">
+                    <CheckCircle2 className="size-3.5" aria-hidden="true" />
+                    {item.status}
+                  </span>
                 </div>
 
-                <div>
-                  <div className="flex items-start gap-3">
-                    <GraduationCap
-                      className="mt-1 size-6 shrink-0 text-[var(--accent)]"
-                      aria-hidden="true"
-                    />
-                    <div>
-                      <h3 className="font-display text-2xl font-extrabold leading-tight tracking-[-0.04em] text-[var(--text)] sm:text-3xl">
-                        {item.degree}
-                      </h3>
-                      <p className="mt-4 leading-7 text-[var(--muted)]">{item.school}</p>
-                    </div>
-                  </div>
+                <p className="font-display mt-7 text-sm font-extrabold text-[var(--accent)] transition-transform group-hover:translate-x-1 motion-reduce:transform-none">{item.period}</p>
+                <h3 className="font-display mt-2 text-2xl font-extrabold leading-tight tracking-[-0.04em] text-[var(--text)]">{item.degree}</h3>
+                <p className="mt-4 leading-7 text-[var(--muted)]">{item.school}</p>
 
-                  <p className="mt-6 inline-flex items-center gap-2 text-sm text-[var(--muted)]">
+                <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 border-t border-[var(--line)] pt-5 text-sm text-[var(--muted)]">
+                  <span className="inline-flex items-center gap-2">
+                    <CalendarDays className="size-4 text-[var(--accent)]" aria-hidden="true" />
+                    {item.period}
+                  </span>
+                  <span className="inline-flex items-center gap-2">
                     <MapPin className="size-4 text-[var(--accent)]" aria-hidden="true" />
                     {item.location}
-                  </p>
+                  </span>
                 </div>
-
-                <p className="inline-flex items-center gap-2 text-sm font-bold text-[var(--accent)] md:col-start-2 lg:col-start-3 lg:row-start-1 lg:justify-self-end">
-                  <CheckCircle2 className="size-4" aria-hidden="true" />
-                  {item.status}
-                </p>
               </article>
             </AnimatedReveal>
           ))}

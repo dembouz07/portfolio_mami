@@ -9,7 +9,7 @@ Portfolio professionnel monopage de **Mame Fatou Faye**, développeuse logiciel 
 - Motion for React (`motion/react`)
 - React Hook Form et Zod
 - Lucide React et React Icons
-- Polices variables Manrope, DM Sans et Newsreader auto-hébergées
+- Polices variables Manrope et DM Sans auto-hébergées
 - Vitest, Testing Library et Playwright
 - ESLint en configuration plate
 

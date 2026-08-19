@@ -16,27 +16,23 @@ export function Experience() {
         />
 
         <TimelineProgress
-          className="relative mt-14"
-          lineClassName="!left-3 md:!left-[10.25rem]"
+          className="relative mt-14 space-y-8 md:space-y-12"
+          lineClassName="md:left-1/2"
         >
           {experiences.map((experience, index) => (
             <TimelineItem
               key={experience.organization}
               index={index}
             >
-              <div className="flex items-center gap-3">
-                <BriefcaseBusiness
-                  className="size-5 shrink-0 text-[var(--accent)]"
-                  aria-hidden="true"
-                />
-                <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--accent)]">
-                  {experience.role}
-                </p>
+              <div className="mb-5 flex items-start justify-between gap-4">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)]">
+                  <BriefcaseBusiness className="size-5" aria-hidden="true" />
+                </span>
+                <span className="font-display text-sm font-extrabold text-[var(--accent)]">0{index + 1}</span>
               </div>
 
-              <h3 className="font-display mt-3 max-w-3xl text-2xl font-extrabold leading-tight tracking-[-0.04em] text-[var(--text)] sm:text-3xl">
-                {experience.organization}
-              </h3>
+              <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--accent)]">{experience.role}</p>
+              <h3 className="font-display mt-2 text-xl font-extrabold leading-tight tracking-[-0.035em] text-[var(--text)] sm:text-2xl">{experience.organization}</h3>
 
               <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-[var(--muted)]">
                 {experience.period ? (
@@ -65,16 +61,11 @@ export function Experience() {
               ) : null}
 
               {experience.technologies.length > 0 ? (
-                <ul
-                  className="mt-7 flex flex-wrap gap-x-6 gap-y-2 border-t border-[var(--line)] pt-5"
-                  aria-label="Technologies utilisées"
-                >
+                <div className="mt-6 flex flex-wrap gap-2" aria-label="Technologies utilisées">
                   {experience.technologies.map((technology) => (
-                    <li key={technology}>
-                      <TechnologyBadge technology={technology} variant="plain" />
-                    </li>
+                    <TechnologyBadge key={technology} technology={technology} />
                   ))}
-                </ul>
+                </div>
               ) : null}
             </TimelineItem>
           ))}

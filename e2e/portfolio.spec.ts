@@ -17,7 +17,7 @@ test("le portfolio charge et les parcours principaux restent utilisables", async
   }
 
   const themeButton = isMobile
-    ? page.getByRole("dialog", { name: "Sommaire" }).getByRole("button", { name: "Activer le thème sombre" })
+    ? page.getByRole("dialog", { name: "Navigation" }).getByRole("button", { name: "Activer le thème sombre" })
     : page.getByRole("button", { name: "Activer le thème sombre" });
   await themeButton.click();
   await expect(page.locator("html")).toHaveClass(/dark/);
@@ -34,9 +34,9 @@ test("le menu mobile s’ouvre et se ferme au clavier", async ({ page, isMobile 
 
   const openButton = page.getByRole("button", { name: "Ouvrir le menu" });
   await openButton.click();
-  await expect(page.getByRole("dialog", { name: "Sommaire" })).toBeVisible();
+  await expect(page.getByRole("dialog", { name: "Navigation" })).toBeVisible();
 
   await page.keyboard.press("Escape");
-  await expect(page.getByRole("dialog", { name: "Sommaire" })).toHaveCount(0);
+  await expect(page.getByRole("dialog", { name: "Navigation" })).toHaveCount(0);
   await expect(openButton).toBeFocused();
 });

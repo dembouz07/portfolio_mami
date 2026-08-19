@@ -51,7 +51,7 @@ export function Navigation() {
     <>
       <a
         href="#contenu-principal"
-        className="fixed left-4 top-3 z-[100] -translate-y-24 border border-[var(--text)] bg-[var(--text)] px-5 py-3 text-sm font-bold [color:var(--bg)] transition-transform focus:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-bright)] motion-reduce:transition-none"
+        className="fixed left-4 top-3 z-[100] -translate-y-24 rounded-full bg-[var(--text)] px-5 py-3 text-sm font-bold [color:var(--bg)] shadow-lg transition-transform focus:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-bright)] motion-reduce:transition-none"
       >
         Aller au contenu
       </a>
@@ -71,19 +71,19 @@ export function Navigation() {
         data-scrolled={isScrolled ? "true" : "false"}
       >
         <nav
-          className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
+          className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
           aria-label="Navigation principale"
         >
           <a
             href="#accueil"
-            className="font-display relative z-10 inline-flex min-h-11 min-w-11 items-center justify-start text-xl font-extrabold tracking-[-0.06em] text-[var(--text)] transition-colors hover:text-[var(--accent)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
+            className="font-display relative z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg text-xl font-extrabold tracking-[-0.06em] text-[var(--text)] transition-colors hover:text-[var(--accent)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
             aria-label="Mame Fatou Faye — retour à l’accueil"
           >
             MF<span className="text-[var(--accent)]">.</span>
           </a>
 
-          <div className="hidden items-center gap-1 lg:flex">
-            {navigationItems.map((item, index) => {
+          <div className="hidden items-center gap-0.5 lg:flex">
+            {navigationItems.map((item) => {
               const isActive = activeSection === item.id;
 
               return (
@@ -91,25 +91,17 @@ export function Navigation() {
                   key={item.id}
                   href={item.href}
                   aria-current={isActive ? "true" : undefined}
-                  className={`relative flex min-h-11 items-baseline gap-1.5 px-2 text-[0.8125rem] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] ${
+                  className={`relative flex min-h-11 items-center rounded-lg px-3 text-[0.8125rem] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] ${
                     isActive
                       ? "text-[var(--text)]"
                       : "text-[var(--muted)] hover:text-[var(--text)]"
                   }`}
                 >
-                  <span
-                    className={`font-display text-[0.58rem] font-extrabold tabular-nums tracking-[0.08em] ${
-                      isActive ? "text-[var(--accent)]" : "text-[var(--muted)]"
-                    }`}
-                    aria-hidden="true"
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
                   <span className="relative z-10">{item.label}</span>
                   {isActive ? (
                     <m.span
                       layoutId="desktop-active-navigation"
-                      className="absolute inset-x-2 bottom-1 h-px bg-[var(--accent)]"
+                      className="absolute inset-x-3 bottom-1.5 h-0.5 rounded-full bg-[var(--accent)]"
                       transition={
                         reduceMotion
                           ? { duration: 0 }
@@ -123,23 +115,20 @@ export function Navigation() {
             })}
           </div>
 
-          <div className="hidden items-center border-l border-[var(--line)] pl-4 lg:flex">
-            <ThemeToggle className="size-9 rounded-none border-0 bg-transparent hover:bg-transparent" />
+          <div className="hidden items-center gap-2 lg:flex">
+            <ThemeToggle />
           </div>
 
           <button
             ref={menuButtonRef}
             type="button"
-            className="relative z-10 inline-flex min-h-11 items-center justify-center gap-2 border-b border-[var(--line)] px-1 text-[var(--text)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] lg:hidden"
+            className="relative z-10 inline-flex size-11 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--text)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] lg:hidden"
             aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={isMenuOpen}
             aria-controls="menu-mobile"
             onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
           >
-            <span className="font-display text-xs font-extrabold uppercase tracking-[0.14em]">
-              Menu
-            </span>
-            <Menu className="size-[1.125rem]" aria-hidden="true" />
+            <Menu className="size-5" aria-hidden="true" />
           </button>
         </nav>
       </m.header>
