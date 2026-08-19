@@ -5,6 +5,28 @@
   "outputDirectory": "dist",
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "portfolio-mami.vercel.app"
+        }
+      ],
+      "destination": "https://mamefatoufaye.tech/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "portfolio-mami-hazel.vercel.app"
+        }
+      ],
+      "destination": "https://mamefatoufaye.tech/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
