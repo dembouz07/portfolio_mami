@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr-SN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f7f9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#05090d" media="(prefers-color-scheme: dark)" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>Mame Fatou Faye | Développeuse logiciel &amp; web à Dakar</title>
+    <meta
+      name="description"
+      content="Portfolio de Mame Fatou Faye, développeuse logiciel et web à Dakar, spécialisée en Angular, Laravel, Java, API REST et bases de données."
+    />
+    <meta name="author" content="Mame Fatou Faye" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta name="application-name" content="Portfolio de Mame Fatou Faye" />
+    <meta name="geo.region" content="SN-DK" />
+    <meta name="geo.placename" content="Dakar" />
+
+    <link rel="canonical" href="__PORTFOLIO_SITE_URL__/" />
+    <link rel="alternate" hreflang="fr-SN" href="__PORTFOLIO_SITE_URL__/" />
+    <link rel="alternate" hreflang="x-default" href="__PORTFOLIO_SITE_URL__/" />
+    <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="preload"
+      as="image"
+      href="/images/portrait-768.avif"
+      type="image/avif"
+      imagesrcset="/images/portrait-480.avif 480w, /images/portrait-768.avif 768w"
+      imagesizes="(max-width: 767px) 88vw, (max-width: 1023px) 480px, 38vw"
+      fetchpriority="high"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_SN" />
+    <meta property="og:site_name" content="Portfolio de Mame Fatou Faye" />
+    <meta property="og:url" content="__PORTFOLIO_SITE_URL__/" />
+    <meta
+      property="og:title"
+      content="Mame Fatou Faye | Développeuse logiciel &amp; web à Dakar"
+    />
+    <meta
+      property="og:description"
+      content="Découvrez le parcours, les compétences et les projets de Mame Fatou Faye, développeuse logiciel et web à Dakar."
+    />
+    <meta
+      property="og:image"
+      content="__PORTFOLIO_SITE_URL__/og/mame-fatou-faye-og.jpg"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="__PORTFOLIO_SITE_URL__/og/mame-fatou-faye-og.jpg"
+    />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Mame Fatou Faye, développeuse logiciel et web à Dakar"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Mame Fatou Faye | Développeuse logiciel &amp; web à Dakar"
+    />
+    <meta
+      name="twitter:description"
+      content="Découvrez le parcours, les compétences et les projets de Mame Fatou Faye, développeuse logiciel et web à Dakar."
+    />
+    <meta
+      name="twitter:image"
+      content="__PORTFOLIO_SITE_URL__/og/mame-fatou-faye-og.jpg"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Mame Fatou Faye, développeuse logiciel et web à Dakar"
+    />
+
+    <script>
+      (() => {
+        try {
+          const storedTheme = localStorage.getItem("mame-fatou-faye-theme");
+          const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
+          const isDark =
+            storedTheme === "dark" || (storedTheme !== "light" && prefersDark);
+
+          document.documentElement.classList.toggle("dark", isDark);
+          document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+        } catch {
+          // Le thème clair du document reste le repli sûr si le stockage est bloqué.
+        }
+      })();
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mame Fatou Faye",
+        "url": "__PORTFOLIO_SITE_URL__/",
+        "jobTitle": "Développeuse logiciel & web",
+        "email": "mailto:mamefatouf986@gmail.com",
+        "telephone": "+221775153965",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Malika",
+          "addressRegion": "Dakar",
+          "addressCountry": "SN"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/mame-fatou-faye-31a1a2287",
+          "https://github.com/mamylahi"
+        ],
+        "knowsAbout": [
+          "Angular",
+          "Laravel",
+          "Java",
+          "API REST",
+          "PostgreSQL",
+          "MySQL"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root">
+      <noscript>
+        Ce portfolio nécessite JavaScript pour afficher ses contenus interactifs.
+      </noscript>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

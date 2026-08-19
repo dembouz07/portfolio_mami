@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="favicon-title">
+  <title id="favicon-title">Monogramme MF</title>
+  <rect width="64" height="64" rx="16" fill="#0e1720"/>
+  <rect x="1" y="1" width="62" height="62" rx="15" fill="none" stroke="#68edbb" stroke-opacity="0.42" stroke-width="2"/>
+  <path d="M13 45V19L23 33L33 19V45" fill="none" stroke="#f2f6f8" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+  <path d="M40 45V19H53M40 31H50" fill="none" stroke="#f2f6f8" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+  <circle cx="53" cy="45" r="3" fill="#68edbb"/>
+</svg>
