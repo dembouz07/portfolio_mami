@@ -9,7 +9,7 @@ export function Skills() {
       <Container>
         <SectionHeading
           eyebrow="02 · Compétences"
-          title="Une boîte à outils orientée produit"
+          title="Angular, Laravel, Java et bases de données"
           description="Des technologies complémentaires pour construire l’interface, la logique métier et les fondations de données d’une application."
           id="skills-title"
         />

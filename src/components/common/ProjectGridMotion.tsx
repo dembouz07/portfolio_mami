@@ -71,7 +71,7 @@ export function ProjectGridMotion<T extends Project>({
                 reduceMotion
                   ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
                   : {
-                      hidden: { opacity: 0, y: 20 },
+                      hidden: { y: 20 },
                       visible: {
                         opacity: 1,
                         y: 0,

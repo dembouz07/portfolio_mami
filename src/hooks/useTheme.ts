@@ -65,16 +65,20 @@ export interface UseThemeResult {
 }
 
 export function useTheme(): UseThemeResult {
-  const [theme, setThemeState] = useState<Theme>(
-    () => readStoredTheme() ?? getSystemTheme(),
-  );
-  const [followsSystem, setFollowsSystem] = useState(
-    () => readStoredTheme() === null,
-  );
+  // Une valeur initiale stable garantit que le HTML pré-rendu et la première
+  // passe du client sont identiques. Le script inline du <head> applique déjà
+  // le bon thème visuel avant l'hydratation.
+  const [theme, setThemeState] = useState<Theme>("light");
+  const [followsSystem, setFollowsSystem] = useState(true);
 
   useEffect(() => {
-    applyTheme(theme);
-  }, [theme]);
+    const storedTheme = readStoredTheme();
+    const initialTheme = storedTheme ?? getSystemTheme();
+
+    setFollowsSystem(storedTheme === null);
+    setThemeState(initialTheme);
+    applyTheme(initialTheme);
+  }, []);
 
   useEffect(() => {
     if (
@@ -104,11 +108,14 @@ export function useTheme(): UseThemeResult {
       if (isTheme(event.newValue)) {
         setFollowsSystem(false);
         setThemeState(event.newValue);
+        applyTheme(event.newValue);
         return;
       }
 
+      const systemTheme = getSystemTheme();
       setFollowsSystem(true);
-      setThemeState(getSystemTheme());
+      setThemeState(systemTheme);
+      applyTheme(systemTheme);
     };
 
     const handleThemeChange = (event: Event) => {
@@ -116,6 +123,7 @@ export function useTheme(): UseThemeResult {
       if (isTheme(nextTheme)) {
         setFollowsSystem(false);
         setThemeState(nextTheme);
+        applyTheme(nextTheme);
       }
     };
 

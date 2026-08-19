@@ -44,7 +44,6 @@ export function AnimatedReveal({
 
     return {
       hidden: {
-        opacity: 0,
         ...getRevealOffset(resolvedDirection),
       },
       visible: {

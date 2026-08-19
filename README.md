@@ -2,6 +2,8 @@
 
 Portfolio professionnel monopage de **Mame Fatou Faye**, développeuse logiciel et web basée à Dakar. Le site présente son parcours, ses compétences, ses expériences et ses projets dans une interface responsive, accessible et animée avec mesure.
 
+URL canonique de production : <https://mamefatoufaye.tech/>.
+
 ## Stack
 
 - React 19 et TypeScript strict
@@ -40,17 +42,17 @@ Toutes les variables préfixées par `VITE_` sont publiques et intégrées au bu
 
 | Variable | Obligatoire | Usage |
 | --- | --- | --- |
-| `VITE_SITE_URL` | Non | URL publique absolue injectée au build dans la balise canonique, Open Graph et le JSON-LD. Repli : `https://portfolio-mami.vercel.app/`. |
 | `VITE_CONTACT_ENDPOINT` | Non | Endpoint HTTPS recevant le formulaire en JSON. Sans cette valeur, le formulaire ouvre un e-mail prérempli vers l’adresse de Mame Fatou Faye. |
 
-Après toute modification de `VITE_SITE_URL`, reconstruire le projet pour régénérer les métadonnées HTML.
+Le domaine canonique est volontairement fixé à `https://mamefatoufaye.tech/` dans la configuration de build afin qu’une ancienne variable Vercel ne puisse pas produire de métadonnées contradictoires.
 
 ## Scripts
 
 | Commande | Description |
 | --- | --- |
 | `npm run dev` | Lance Vite en développement. |
-| `npm run build` | Vérifie TypeScript puis produit le dossier `dist/`. |
+| `npm run build` | Vérifie TypeScript, construit les bundles puis pré-rend la page dans `dist/`. |
+| `npm run check:seo` | Contrôle le domaine canonique, le sitemap, le JSON-LD et le HTML pré-rendu. |
 | `npm run preview` | Sert localement le build de production. |
 | `npm run typecheck` | Vérifie les types sans produire de fichiers. |
 | `npm run lint` | Analyse le dépôt avec ESLint. |
@@ -115,7 +117,7 @@ Le projet prévoit notamment :
 - une navigation au clavier, des focus visibles et une hiérarchie HTML sémantique ;
 - des tests ciblés du thème, des filtres, du formulaire et des contenus conditionnels ;
 - un environnement de test qui simule `matchMedia`, `IntersectionObserver` et `ResizeObserver` ;
-- des métadonnées SEO en français, une URL canonique et un schéma JSON-LD `Person`.
+- des métadonnées SEO en français, une URL canonique, un schéma JSON-LD `ProfilePage`/`Person`/`WebSite` et un HTML pré-rendu.
 
 ## Déploiement sur Vercel
 
@@ -123,9 +125,8 @@ Le projet prévoit notamment :
 2. Sélectionner le preset **Vite**.
 3. Utiliser `pnpm build` comme commande de build (Vercel détecte `pnpm-lock.yaml`).
 4. Utiliser `dist` comme dossier de sortie.
-5. Définir `VITE_SITE_URL` avec l’URL publique finale, en incluant `https://`.
-6. Définir `VITE_CONTACT_ENDPOINT` uniquement si un service réel de traitement du formulaire est disponible.
-7. Déployer, puis vérifier `/robots.txt`, `/sitemap.xml`, `/site.webmanifest` et l’image Open Graph.
+5. Définir `VITE_CONTACT_ENDPOINT` uniquement si un service réel de traitement du formulaire est disponible.
+6. Déployer, puis vérifier `/robots.txt`, `/sitemap.xml`, `/site.webmanifest`, l’image Open Graph et la présence du contenu dans le code source HTML.
 
 ## Informations volontairement non inventées
 

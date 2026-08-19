@@ -17,7 +17,7 @@ export function Projects() {
         <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <SectionHeading
             eyebrow="04 · Projets"
-            title="Des produits pensés autour d’un besoin réel"
+            title="Des applications web et logicielles utiles"
             description="Quatre projets académiques et professionnels où l’architecture, l’usage et la fiabilité avancent ensemble."
             id="projects-title"
           />

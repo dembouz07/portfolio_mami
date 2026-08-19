@@ -10,7 +10,7 @@ export function Experience() {
       <Container>
         <SectionHeading
           eyebrow="03 · Expériences"
-          title="Des contextes professionnels concrets"
+          title="Expériences en développement web"
           description="Des expériences centrées sur le développement d’applications web et la compréhension de besoins métier."
           id="experience-title"
         />

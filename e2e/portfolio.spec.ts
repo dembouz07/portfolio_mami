@@ -4,7 +4,7 @@ test("le portfolio charge et les parcours principaux restent utilisables", async
   await page.emulateMedia({ colorScheme: "light" });
   await page.goto("/");
 
-  await expect(page.getByRole("heading", { level: 1, name: "Mame Fatou Faye" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: /Mame Fatou Faye/ })).toBeVisible();
   await expect(page.getByAltText("Portrait de Mame Fatou Faye")).toBeVisible();
   await expect(page.getByRole("link", { name: "Découvrir mes projets" })).toBeVisible();
 

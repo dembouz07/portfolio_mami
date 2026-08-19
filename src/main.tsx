@@ -1,7 +1,7 @@
 import "@fontsource-variable/manrope";
 import "@fontsource-variable/dm-sans";
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 
 import { App } from "./App";
 import "./styles/index.css";
@@ -12,8 +12,14 @@ if (!rootElement) {
   throw new Error("L’élément racine de l’application est introuvable.");
 }
 
-createRoot(rootElement).render(
+const application = (
   <StrictMode>
     <App />
-  </StrictMode>,
+  </StrictMode>
 );
+
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(rootElement, application);
+} else {
+  createRoot(rootElement).render(application);
+}

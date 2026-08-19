@@ -3,6 +3,7 @@
   "short_name": "Mame Fatou",
   "description": "Portfolio de Mame Fatou Faye, développeuse logiciel et web à Dakar.",
   "lang": "fr-SN",
+  "id": "/",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

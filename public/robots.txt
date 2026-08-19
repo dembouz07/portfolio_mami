@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portfolio-mami.vercel.app/sitemap.xml
+Sitemap: https://mamefatoufaye.tech/sitemap.xml

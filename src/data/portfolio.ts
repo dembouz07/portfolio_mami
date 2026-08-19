@@ -20,7 +20,7 @@ export const identity = {
   phoneHref: "+221775153965",
   linkedin: "https://www.linkedin.com/in/mame-fatou-faye-31a1a2287",
   github: "https://github.com/mamylahi",
-  website: "https://portfolio-mami.vercel.app/",
+  website: "https://mamefatoufaye.tech/",
 } as const satisfies Identity;
 
 export const navigationItems = [

@@ -9,7 +9,7 @@ export function About() {
   return (
     <section id="a-propos" aria-labelledby="about-title" className="section-shell">
       <Container>
-        <SectionHeading eyebrow="01 · À propos" title="Transformer les besoins en solutions claires" id="about-title" />
+        <SectionHeading eyebrow="01 · À propos" title="Développeuse web à Dakar, du besoin à la solution" id="about-title" />
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.9fr)] lg:gap-16">
           <AnimatedReveal>

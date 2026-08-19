@@ -35,7 +35,7 @@ export function SectionHeading({
           "mb-4 flex items-center gap-3",
           centered && "justify-center",
         )}
-        initial={reduceMotion ? false : { opacity: 0 }}
+        initial={reduceMotion ? false : { y: 8 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.8 }}
         transition={{ duration: reduceMotion ? 0 : 0.35 }}
@@ -56,7 +56,7 @@ export function SectionHeading({
             "font-display text-balance text-3xl font-extrabold leading-[1.08] tracking-[-0.04em] text-[var(--text)] sm:text-4xl lg:text-5xl",
             titleClassName,
           )}
-          initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+          initial={reduceMotion ? false : { y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{
@@ -75,7 +75,7 @@ export function SectionHeading({
             centered && "mx-auto",
             descriptionClassName,
           )}
-          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+          initial={reduceMotion ? false : { y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{

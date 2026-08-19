@@ -8,10 +8,10 @@
     <meta name="theme-color" content="#05090d" media="(prefers-color-scheme: dark)" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-    <title>Mame Fatou Faye | Développeuse logiciel &amp; web à Dakar</title>
+    <title>Mame Fatou Faye — Développeuse web à Dakar</title>
     <meta
       name="description"
-      content="Portfolio de Mame Fatou Faye, développeuse logiciel et web à Dakar, spécialisée en Angular, Laravel, Java, API REST et bases de données."
+      content="Portfolio de Mame Fatou Faye, développeuse web à Dakar : projets Angular, Laravel, Java, API REST et bases de données. Ouverte aux opportunités."
     />
     <meta name="author" content="Mame Fatou Faye" />
     <meta
@@ -25,6 +25,8 @@
     <link rel="canonical" href="__PORTFOLIO_SITE_URL__/" />
     <link rel="alternate" hreflang="fr-SN" href="__PORTFOLIO_SITE_URL__/" />
     <link rel="alternate" hreflang="x-default" href="__PORTFOLIO_SITE_URL__/" />
+    <link rel="me" href="https://www.linkedin.com/in/mame-fatou-faye-31a1a2287" />
+    <link rel="me" href="https://github.com/mamylahi" />
     <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
@@ -44,11 +46,11 @@
     <meta property="og:url" content="__PORTFOLIO_SITE_URL__/" />
     <meta
       property="og:title"
-      content="Mame Fatou Faye | Développeuse logiciel &amp; web à Dakar"
+      content="Mame Fatou Faye — Développeuse web à Dakar"
     />
     <meta
       property="og:description"
-      content="Découvrez le parcours, les compétences et les projets de Mame Fatou Faye, développeuse logiciel et web à Dakar."
+      content="Découvrez les projets Angular, Laravel et Java de Mame Fatou Faye, développeuse web à Dakar ouverte aux opportunités."
     />
     <meta
       property="og:image"
@@ -69,11 +71,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Mame Fatou Faye | Développeuse logiciel &amp; web à Dakar"
+      content="Mame Fatou Faye — Développeuse web à Dakar"
     />
     <meta
       name="twitter:description"
-      content="Découvrez le parcours, les compétences et les projets de Mame Fatou Faye, développeuse logiciel et web à Dakar."
+      content="Découvrez les projets Angular, Laravel et Java de Mame Fatou Faye, développeuse web à Dakar ouverte aux opportunités."
     />
     <meta
       name="twitter:image"
@@ -99,43 +101,88 @@
         }
       })();
     </script>
+    <noscript>
+      <style>
+        [style*="opacity:0"] {
+          opacity: 1 !important;
+          transform: none !important;
+          clip-path: none !important;
+        }
+      </style>
+    </noscript>
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Mame Fatou Faye",
-        "url": "__PORTFOLIO_SITE_URL__/",
-        "jobTitle": "Développeuse logiciel & web",
-        "email": "mailto:mamefatouf986@gmail.com",
-        "telephone": "+221775153965",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Malika",
-          "addressRegion": "Dakar",
-          "addressCountry": "SN"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/mame-fatou-faye-31a1a2287",
-          "https://github.com/mamylahi"
-        ],
-        "knowsAbout": [
-          "Angular",
-          "Laravel",
-          "Java",
-          "API REST",
-          "PostgreSQL",
-          "MySQL"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "__PORTFOLIO_SITE_URL__/#website",
+            "url": "__PORTFOLIO_SITE_URL__/",
+            "name": "Portfolio de Mame Fatou Faye",
+            "description": "Portfolio professionnel de Mame Fatou Faye, développeuse web à Dakar.",
+            "inLanguage": "fr-SN",
+            "publisher": { "@id": "__PORTFOLIO_SITE_URL__/#person" }
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "__PORTFOLIO_SITE_URL__/#profile-page",
+            "url": "__PORTFOLIO_SITE_URL__/",
+            "name": "Mame Fatou Faye — Développeuse web à Dakar",
+            "description": "Parcours, compétences et projets de Mame Fatou Faye en développement web et logiciel.",
+            "inLanguage": "fr-SN",
+            "isPartOf": { "@id": "__PORTFOLIO_SITE_URL__/#website" },
+            "mainEntity": { "@id": "__PORTFOLIO_SITE_URL__/#person" },
+            "primaryImageOfPage": { "@id": "__PORTFOLIO_SITE_URL__/#portrait" }
+          },
+          {
+            "@type": "Person",
+            "@id": "__PORTFOLIO_SITE_URL__/#person",
+            "name": "Mame Fatou Faye",
+            "url": "__PORTFOLIO_SITE_URL__/",
+            "image": { "@id": "__PORTFOLIO_SITE_URL__/#portrait" },
+            "jobTitle": "Développeuse logiciel et web",
+            "email": "mamefatouf986@gmail.com",
+            "telephone": "+221775153965",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Malika",
+              "addressRegion": "Dakar",
+              "addressCountry": "SN"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/in/mame-fatou-faye-31a1a2287",
+              "https://github.com/mamylahi"
+            ],
+            "knowsAbout": [
+              "Angular",
+              "Laravel",
+              "Java",
+              "TypeScript",
+              "API REST",
+              "PostgreSQL",
+              "MySQL"
+            ]
+          },
+          {
+            "@type": "ImageObject",
+            "@id": "__PORTFOLIO_SITE_URL__/#portrait",
+            "url": "__PORTFOLIO_SITE_URL__/images/portrait-768.webp",
+            "contentUrl": "__PORTFOLIO_SITE_URL__/images/portrait-768.webp",
+            "width": 768,
+            "height": 1024,
+            "caption": "Portrait de Mame Fatou Faye"
+          }
         ]
       }
     </script>
   </head>
   <body>
-    <div id="root">
-      <noscript>
-        Ce portfolio nécessite JavaScript pour afficher ses contenus interactifs.
-      </noscript>
-    </div>
+    <div id="root"></div>
+    <noscript>
+      Ce portfolio reste consultable dans son contenu principal, mais JavaScript est nécessaire
+      pour les interactions et les animations.
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

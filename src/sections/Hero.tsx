@@ -103,13 +103,14 @@ export function Hero() {
               <span className="text-sm font-semibold text-[var(--muted)]">{hero.eyebrow}</span>
             </m.div>
 
-            <m.h1 id="hero-title" variants={fadeUp} className="hero-name max-w-[9ch] text-balance text-[var(--text)]">
-              {hero.title}
+            <m.h1 id="hero-title" variants={fadeUp} className="max-w-3xl text-balance">
+              <span className="hero-name block max-w-[9ch] text-[var(--text)]">
+                {hero.title}
+              </span>
+              <span className="hero-role font-display mt-7 block max-w-2xl text-2xl font-bold tracking-[-0.035em] sm:text-3xl lg:text-4xl">
+                {hero.role} à Dakar
+              </span>
             </m.h1>
-
-            <m.p variants={fadeUp} className="hero-role font-display mt-7 max-w-2xl text-balance text-2xl font-bold tracking-[-0.035em] sm:text-3xl lg:text-4xl">
-              {hero.role}
-            </m.p>
 
             <m.p variants={fadeUp} className="mt-6 max-w-2xl text-balance text-base leading-8 text-[var(--muted)] sm:text-lg">
               {hero.tagline}
@@ -193,7 +194,7 @@ export function Hero() {
         </div>
 
         <m.dl
-          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+          initial={reduceMotion ? false : { y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: reduceMotion ? 0.12 : 0.6, delay: reduceMotion ? 0 : 0.75 }}
           className="surface-panel mt-16 grid grid-cols-2 overflow-hidden rounded-2xl sm:grid-cols-3 lg:mt-20"
