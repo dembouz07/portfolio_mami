@@ -49,7 +49,7 @@ export function SectionHeading({
         </p>
       </m.div>
 
-      <div className="overflow-hidden pb-1">
+      <div className="pb-2">
         <m.h2
           id={id}
           className={cn(
