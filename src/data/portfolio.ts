@@ -85,7 +85,7 @@ export const skillGroups = [
 
 export const experiences = [
   {
-    organization: "Ministère de la Formation professionnelle et technique",
+    organization: "Ministère de l'Enseignement et de la Formation professionnelle et technique",
     role: "Développeuse web - Stagiaire",
     period: null,
     location: "Dakar, Sénégal",

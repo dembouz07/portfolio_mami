@@ -27,7 +27,11 @@ describe("expériences", () => {
   it("n’affiche aucun libellé de période quand la date du ministère est absente", () => {
     render(<Experience />);
 
-    expect(screen.getByRole("heading", { name: "Ministère de la Formation professionnelle et technique" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", {
+        name: "Ministère de l'Enseignement et de la Formation professionnelle et technique",
+      }),
+    ).toBeInTheDocument();
     expect(screen.queryByText(/à préciser|période non renseignée/i)).not.toBeInTheDocument();
     expect(screen.getByText("Novembre 2024 - Février 2025")).toBeInTheDocument();
   });

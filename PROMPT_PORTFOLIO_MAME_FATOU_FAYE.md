@@ -204,7 +204,7 @@ Afficher une timeline élégante et responsive. Séparer clairement les expérie
 ```ts
 export const experiences = [
   {
-    organization: "Ministère de la Formation professionnelle et technique",
+    organization: "Ministère de l'Enseignement et de la Formation professionnelle et technique",
     role: "Développeuse web - Stagiaire",
     period: null,
     location: "Dakar, Sénégal",
@@ -598,7 +598,7 @@ Le travail est terminé uniquement si :
 
 - le portfolio semble conçu spécialement pour Mame Fatou Faye et non généré depuis un template générique ;
 - la palette reprend fidèlement l'identité colorée d'Ousseynou sans copier sa mise en page ;
-- le stage au Ministère de la Formation professionnelle et technique est visible sans date inventée ;
+- le stage au Ministère de l'Enseignement et de la Formation professionnelle et technique est visible sans date inventée ;
 - l'expérience SUN TELECOM est claire et non dupliquée ;
 - les projets sont séparés des expériences professionnelles ;
 - les icônes et logos sont réels, cohérents et accessibles ;

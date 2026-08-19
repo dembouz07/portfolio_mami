@@ -130,6 +130,6 @@ Le projet prévoit notamment :
 
 ## Informations volontairement non inventées
 
-La période, les missions détaillées et les technologies du stage au **Ministère de la Formation professionnelle et technique** n’ont pas été fournies. L’interface masque donc ces champs lorsqu’ils sont absents. Ils pourront être ajoutés à la source de données après confirmation par Mame Fatou Faye.
+La période, les missions détaillées et les technologies du stage au **Ministère de l'Enseignement et de la Formation professionnelle et technique** n’ont pas été fournies. L’interface masque donc ces champs lorsqu’ils sont absents. Ils pourront être ajoutés à la source de données après confirmation par Mame Fatou Faye.
 
 De même, aucun lien de démonstration ou de dépôt n’est affiché pour un projet tant qu’une URL réelle n’a pas été communiquée.
