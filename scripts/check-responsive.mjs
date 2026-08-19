@@ -5,6 +5,11 @@ import { chromium } from "@playwright/test";
 
 const baseURL = process.env.PLAYWRIGHT_BASE_URL || "http://127.0.0.1:4173";
 const outputDirectory = path.resolve("test-results", "responsive");
+const requestedWidths = process.env.RESPONSIVE_WIDTHS
+  ?.split(",")
+  .map((value) => Number.parseInt(value.trim(), 10))
+  .filter((value) => Number.isFinite(value) && value >= 320);
+const widths = requestedWidths?.length ? requestedWidths : [320, 375, 768, 1024, 1440];
 const browser = await chromium.launch({
   executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
   headless: true,
@@ -13,7 +18,7 @@ const browser = await chromium.launch({
 await mkdir(outputDirectory, { recursive: true });
 
 const results = [];
-for (const width of [320, 375, 768, 1024, 1440]) {
+for (const width of widths) {
   const height = width < 768 ? 812 : 900;
   const page = await browser.newPage({ viewport: { width, height } });
   const pageErrors = [];
@@ -53,6 +58,34 @@ for (const width of [320, 375, 768, 1024, 1440]) {
   if (width === 375 || width === 1440) {
     await page.screenshot({
       path: path.join(outputDirectory, `hero-${width}.png`),
+      fullPage: false,
+    });
+
+    for (const sectionId of ["a-propos", "competences", "experiences", "projets", "formation", "contact"]) {
+      await page.evaluate((id) => {
+        const section = document.getElementById(id);
+        if (section) {
+          const top = section.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: "instant" });
+        }
+      }, sectionId);
+      await page.waitForTimeout(350);
+      await page.screenshot({
+        path: path.join(outputDirectory, `${sectionId}-${width}.png`),
+        fullPage: false,
+      });
+    }
+
+    await page.evaluate(() => {
+      const footer = document.querySelector("footer");
+      if (footer) {
+        const top = footer.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: "instant" });
+      }
+    });
+    await page.waitForTimeout(350);
+    await page.screenshot({
+      path: path.join(outputDirectory, `footer-${width}.png`),
       fullPage: false,
     });
   }

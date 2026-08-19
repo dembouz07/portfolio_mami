@@ -1,11 +1,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoaderCircle, Mail, MapPin, Phone, Send } from "lucide-react";
+import { ArrowUpRight, LoaderCircle, Mail, MapPin, Phone, Send } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { SiGithub } from "react-icons/si";
 
-import { AnimatedReveal, Container, SectionHeading } from "../components/common";
+import { AnimatedReveal, Container } from "../components/common";
 import { contact, identity } from "../data/portfolio";
 import { contactSchema, type ContactFormData } from "../lib/contact";
 
@@ -87,50 +87,60 @@ export function Contact() {
   });
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="section-shell">
-      <Container>
-        <SectionHeading
-          eyebrow="06 · Contact"
-          title={contact.title}
-          description={contact.description}
-          id="contact-title"
-        />
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-[minmax(18rem,0.72fr)_minmax(0,1.28fr)] lg:gap-8">
-          <AnimatedReveal direction="right" className="rounded-3xl bg-[var(--text)] p-6 [color:var(--bg)] sm:p-8 lg:p-10">
-            <p className="font-display max-w-md text-2xl font-extrabold leading-tight tracking-[-0.04em] sm:text-3xl">
-              Parlons de votre prochain projet.
+    <section id="contact" aria-labelledby="contact-title" className="contact-stage relative overflow-hidden">
+      <div className="contact-stage__glow" aria-hidden="true" />
+      <Container className="relative py-24 sm:py-32 lg:py-40">
+        <AnimatedReveal className="border-t border-[var(--line)] pt-5">
+          <div className="grid gap-8 lg:grid-cols-[minmax(12rem,0.3fr)_minmax(0,0.7fr)]">
+            <p className="flex items-center gap-3 text-[0.67rem] font-black uppercase tracking-[0.2em] text-[var(--muted)]">
+              <span className="size-2 rounded-full bg-[var(--accent)]" aria-hidden="true" />
+              06 / Contact
             </p>
-            <p className="mt-4 max-w-sm text-sm leading-7 opacity-70">
-              Une idée, une mission ou une opportunité à Dakar ou à distance ? Je serai ravie d’en discuter.
+            <div>
+              <h2
+                id="contact-title"
+                className="font-display max-w-5xl text-[clamp(3.1rem,8.4vw,8.8rem)] font-black leading-[0.84] tracking-[-0.075em]"
+              >
+                Créons quelque chose de <span className="font-editorial font-normal italic text-[var(--accent)]">remarquable.</span>
+              </h2>
+              <p className="mt-7 max-w-2xl text-base leading-8 text-[var(--muted)] sm:text-lg">{contact.description}</p>
+            </div>
+          </div>
+        </AnimatedReveal>
+
+        <div className="mt-20 grid gap-16 lg:grid-cols-[minmax(18rem,0.7fr)_minmax(0,1.3fr)] lg:gap-24">
+          <AnimatedReveal direction="right">
+            <p className="max-w-md text-xl font-bold leading-snug tracking-[-0.025em] sm:text-2xl">
+              Une idée, une mission ou une opportunité à Dakar ou à distance&nbsp;? Écrivons la suite ensemble.
             </p>
 
-            <ul className="mt-8 space-y-2">
+            <ul className="mt-10 border-t border-[var(--line)]">
               {contactLinks.map(({ label, value, href, icon: Icon, external }) => {
                 const content = (
                   <>
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[color-mix(in_srgb,var(--bg)_10%,transparent)]">
-                      <Icon className="size-[1.1rem]" aria-hidden="true" />
+                    <Icon className="size-4 shrink-0 text-[var(--accent)]" aria-hidden="true" />
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-[0.62rem] font-black uppercase tracking-[0.16em] text-[var(--muted)]">{label}</span>
+                      <span className="mt-1 block break-words text-sm font-semibold sm:text-base">{value}</span>
                     </span>
-                    <span className="min-w-0">
-                      <span className="block text-[0.67rem] font-bold uppercase tracking-[0.13em] opacity-60">{label}</span>
-                      <span className="block break-words text-sm font-semibold">{value}</span>
-                    </span>
+                    {href ? (
+                      <ArrowUpRight className="size-4 shrink-0 text-[var(--muted)] transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transform-none" aria-hidden="true" />
+                    ) : null}
                   </>
                 );
 
                 return (
-                  <li key={label}>
+                  <li key={label} className="border-b border-[var(--line)]">
                     {href ? (
                       <a
                         href={href}
                         {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                        className="flex min-h-14 items-center gap-3 rounded-2xl border border-transparent p-2 transition-colors hover:border-[color-mix(in_srgb,var(--bg)_18%,transparent)] hover:bg-[color-mix(in_srgb,var(--bg)_8%,transparent)]"
+                        className="group flex min-h-20 items-center gap-4 py-4 transition-colors hover:text-[var(--accent)]"
                       >
                         {content}
                       </a>
                     ) : (
-                      <div className="flex min-h-14 items-center gap-3 p-2">{content}</div>
+                      <div className="flex min-h-20 items-center gap-4 py-4">{content}</div>
                     )}
                   </li>
                 );
@@ -138,7 +148,7 @@ export function Contact() {
             </ul>
           </AnimatedReveal>
 
-          <AnimatedReveal direction="left" delay={0.08} className="surface-panel rounded-3xl p-6 sm:p-8 lg:p-10">
+          <AnimatedReveal direction="left" delay={0.08}>
             <form noValidate onSubmit={onSubmit} aria-label="Formulaire de contact">
               <div className="grid gap-5 sm:grid-cols-2">
                 <FormField label="Nom" id="name" error={errors.name?.message}>
@@ -147,7 +157,7 @@ export function Contact() {
                     type="text"
                     autoComplete="name"
                     placeholder="Votre nom"
-                    className="field-control min-h-12 px-4"
+                    className="field-control min-h-14 py-3"
                     aria-invalid={errors.name ? "true" : "false"}
                     aria-describedby={errors.name ? "name-error" : undefined}
                     {...register("name")}
@@ -161,7 +171,7 @@ export function Contact() {
                     autoComplete="email"
                     inputMode="email"
                     placeholder="vous@exemple.com"
-                    className="field-control min-h-12 px-4"
+                    className="field-control min-h-14 py-3"
                     aria-invalid={errors.email ? "true" : "false"}
                     aria-describedby={errors.email ? "email-error" : undefined}
                     {...register("email")}
@@ -175,7 +185,7 @@ export function Contact() {
                     id="subject"
                     type="text"
                     placeholder="À propos de…"
-                    className="field-control min-h-12 px-4"
+                    className="field-control min-h-14 py-3"
                     aria-invalid={errors.subject ? "true" : "false"}
                     aria-describedby={errors.subject ? "subject-error" : undefined}
                     {...register("subject")}
@@ -189,7 +199,7 @@ export function Contact() {
                     id="message"
                     rows={6}
                     placeholder="Décrivez votre projet ou votre besoin…"
-                    className="field-control resize-y px-4 py-3"
+                    className="field-control resize-y py-3"
                     aria-invalid={errors.message ? "true" : "false"}
                     aria-describedby={errors.message ? "message-error" : undefined}
                     {...register("message")}
@@ -202,14 +212,14 @@ export function Contact() {
                 <input id="website" type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
               </div>
 
-              <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="mt-9 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
                 <p className="max-w-sm text-xs leading-5 text-[var(--muted)]">
                   Sans service configuré, votre application de messagerie sera utilisée. Aucun faux envoi n’est affiché.
                 </p>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-bold text-[#03120d] transition-[transform,filter] hover:-translate-y-0.5 hover:brightness-110 active:translate-y-0 disabled:cursor-wait disabled:opacity-65 motion-reduce:transform-none"
+                  className="group inline-flex min-h-14 shrink-0 items-center justify-center gap-3 border-b-2 border-[var(--accent)] px-1 py-3 text-sm font-black uppercase tracking-[0.11em] text-[var(--text)] transition-colors hover:text-[var(--accent)] disabled:cursor-wait disabled:opacity-65"
                 >
                   {isSubmitting ? <LoaderCircle className="size-4 animate-spin motion-reduce:animate-none" aria-hidden="true" /> : <Send className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transform-none" aria-hidden="true" />}
                   {isSubmitting ? "Envoi…" : "Envoyer le message"}
@@ -242,7 +252,7 @@ interface FormFieldProps {
 function FormField({ id, label, error, children }: FormFieldProps) {
   return (
     <div>
-      <label htmlFor={id} className="mb-2 block text-sm font-bold text-[var(--text)]">
+      <label htmlFor={id} className="mb-1 block text-[0.67rem] font-black uppercase tracking-[0.15em] text-[var(--muted)]">
         {label}
       </label>
       {children}

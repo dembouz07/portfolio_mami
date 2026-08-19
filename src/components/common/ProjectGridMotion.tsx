@@ -47,7 +47,7 @@ export function ProjectGridMotion<T extends Project>({
         className={cn("grid gap-5 md:grid-cols-2", className)}
         initial={reduceMotion ? false : "hidden"}
         whileInView="visible"
-        viewport={{ once: true, amount: 0.08 }}
+        viewport={{ once: true, amount: 0.02 }}
         variants={{
           hidden: {},
           visible: {

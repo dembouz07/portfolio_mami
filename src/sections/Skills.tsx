@@ -14,24 +14,51 @@ export function Skills() {
           id="skills-title"
         />
 
-        <StaggerGroup className="mt-12 grid gap-4 md:grid-cols-2" stagger={0.1}>
-          {skillGroups.map((group) => (
-            <StaggerItem key={group.title} className="skill-card rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-6 sm:p-8">
-              <div className="flex items-start gap-4">
-                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)]">
-                  <Code2 className="size-5" aria-hidden="true" />
-                </span>
-                <div>
-                  <h3 className="font-display text-xl font-extrabold tracking-[-0.035em] text-[var(--text)]">{group.title}</h3>
-                  <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{group.description}</p>
+        <StaggerGroup
+          as="ol"
+          className="mt-14 border-y border-[var(--line)]"
+          stagger={0.1}
+          ariaLabel="Inventaire des compétences"
+        >
+          {skillGroups.map((group, index) => (
+            <StaggerItem
+              key={group.title}
+              as="li"
+              className="grid gap-6 border-b border-[var(--line)] py-8 last:border-b-0 sm:py-10 md:grid-cols-[4.5rem_minmax(12rem,0.8fr)_minmax(0,1.2fr)] md:gap-x-8 lg:grid-cols-[5.5rem_minmax(14rem,0.75fr)_minmax(0,1.25fr)] lg:gap-x-10"
+            >
+              <span
+                className="font-display text-4xl font-extrabold leading-none tracking-[-0.06em] text-[var(--accent)] sm:text-5xl"
+                aria-hidden="true"
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+
+              <div>
+                <div className="flex items-center gap-3 text-[var(--accent)]">
+                  <Code2 className="size-5 shrink-0" aria-hidden="true" />
+                  <h3 className="font-display text-xl font-extrabold tracking-[-0.035em] text-[var(--text)] sm:text-2xl">
+                    {group.title}
+                  </h3>
                 </div>
+                <p className="mt-3 max-w-md text-sm leading-6 text-[var(--muted)]">
+                  {group.description}
+                </p>
               </div>
 
-              <div className="mt-6 flex flex-wrap gap-2.5" aria-label={`Technologies : ${group.title}`}>
+              <ul
+                className="grid content-start gap-x-8 sm:grid-cols-2"
+                aria-label={`Technologies : ${group.title}`}
+              >
                 {group.items.map((technology) => (
-                  <TechnologyBadge key={technology} technology={technology} />
+                  <li key={technology} className="border-t border-[var(--line)] py-3">
+                    <TechnologyBadge
+                      technology={technology}
+                      variant="plain"
+                      className="w-full"
+                    />
+                  </li>
                 ))}
-              </div>
+              </ul>
             </StaggerItem>
           ))}
         </StaggerGroup>

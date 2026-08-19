@@ -87,101 +87,116 @@ export function MobileNavigationDialog({
   return (
     <AnimatePresence initial={false}>
       {isOpen ? (
-        <div className="fixed inset-0 z-[70] lg:hidden">
-          <m.button
-            key="mobile-menu-backdrop"
-            type="button"
-            tabIndex={-1}
-            aria-label="Fermer le menu"
-            className="absolute inset-0 size-full cursor-default bg-[var(--bg)]/75 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.2 }}
-            onClick={onClose}
-          />
-
-          <m.div
-            key="mobile-menu-panel"
-            ref={panelRef}
-            id="menu-mobile"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="menu-mobile-title"
-            className="absolute inset-y-0 right-0 flex w-[min(88vw,24rem)] flex-col border-l border-[var(--line)] bg-[var(--surface-solid)] p-5 shadow-[var(--shadow)]"
-            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 28 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 20 }}
-            transition={{
-              duration: reduceMotion ? 0.12 : 0.3,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          >
-            <div className="flex items-center justify-between gap-4">
-              <p
-                id="menu-mobile-title"
-                className="font-display text-sm font-bold uppercase tracking-[0.14em] text-[var(--muted)]"
-              >
-                Navigation
-              </p>
+        <m.div
+          key="mobile-menu-panel"
+          ref={panelRef}
+          id="menu-mobile"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="menu-mobile-title"
+          className="fixed inset-0 z-[70] overflow-y-auto bg-[var(--surface-solid)] lg:hidden"
+          initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
+          transition={{
+            duration: reduceMotion ? 0.1 : 0.28,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          <div className="mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-4 sm:px-6">
+            <div className="flex h-20 shrink-0 items-center justify-between border-b border-[var(--line)]">
+              <span className="font-display text-xl font-extrabold tracking-[-0.06em] text-[var(--text)]">
+                MF<span className="text-[var(--accent)]">.</span>
+              </span>
               <button
                 ref={closeButtonRef}
                 type="button"
-                className="inline-flex size-11 items-center justify-center rounded-full border border-[var(--line)] text-[var(--text)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+                className="inline-flex min-h-11 items-center gap-2 border-b border-[var(--line)] px-1 text-[var(--text)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
                 aria-label="Fermer le menu"
                 onClick={onClose}
               >
-                <X className="size-5" aria-hidden="true" />
+                <span className="font-display text-xs font-extrabold uppercase tracking-[0.14em]">
+                  Fermer
+                </span>
+                <X className="size-[1.125rem]" aria-hidden="true" />
               </button>
             </div>
 
-            <nav
-              className="mt-8 flex flex-1 flex-col gap-1 overflow-y-auto"
-              aria-label="Navigation mobile"
-            >
-              {navigationItems.map((item, index) => {
-                const isActive = activeSection === item.id;
+            <div className="grid flex-1 content-start gap-5 py-6 sm:grid-cols-[minmax(8rem,0.35fr)_minmax(0,1fr)] sm:gap-10 sm:py-10">
+              <div>
+                <p className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[var(--accent)]">
+                  Navigation principale
+                </p>
+                <h2
+                  id="menu-mobile-title"
+                  className="font-display mt-2 text-3xl font-extrabold tracking-[-0.05em] text-[var(--text)] sm:text-4xl"
+                >
+                  Sommaire
+                </h2>
+              </div>
 
-                return (
-                  <m.a
-                    key={item.id}
-                    href={item.href}
-                    aria-current={isActive ? "true" : undefined}
-                    className={`font-display group flex min-h-12 items-center justify-between rounded-xl border px-4 py-3 text-base font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] ${
-                      isActive
-                        ? "border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--text)]"
-                        : "border-transparent text-[var(--muted)] hover:border-[var(--line)] hover:bg-[var(--bg-soft)] hover:text-[var(--text)]"
-                    }`}
-                    initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      duration: reduceMotion ? 0.1 : 0.28,
-                      delay: reduceMotion ? 0 : 0.04 + index * 0.025,
-                    }}
-                    onClick={onClose}
-                  >
-                    <span>{item.label}</span>
-                    <span
-                      className={`h-1.5 w-1.5 rounded-full transition-colors ${
-                        isActive
-                          ? "bg-[var(--accent)]"
-                          : "bg-[var(--line)] group-hover:bg-[var(--accent)]"
-                      }`}
-                      aria-hidden="true"
-                    />
-                  </m.a>
-                );
-              })}
-            </nav>
+              <nav aria-label="Navigation mobile">
+                <ol className="border-b border-[var(--line)]">
+                  {navigationItems.map((item, index) => {
+                    const isActive = activeSection === item.id;
 
-            <div className="mt-5 flex items-center justify-between gap-4 border-t border-[var(--line)] pt-5">
-              <span className="text-sm font-medium text-[var(--muted)]">
-                Thème du site
-              </span>
-              <ThemeToggle />
+                    return (
+                      <li key={item.id} className="border-t border-[var(--line)]">
+                        <m.a
+                          href={item.href}
+                          aria-current={isActive ? "true" : undefined}
+                          className={`font-display group grid min-h-16 grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-2 py-2 transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--accent)] sm:min-h-20 sm:grid-cols-[3rem_minmax(0,1fr)_auto] ${
+                            isActive
+                              ? "text-[var(--text)]"
+                              : "text-[var(--muted)] hover:text-[var(--text)]"
+                          }`}
+                          initial={
+                            reduceMotion ? { opacity: 0 } : { opacity: 0, y: 12 }
+                          }
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{
+                            duration: reduceMotion ? 0.08 : 0.3,
+                            delay: reduceMotion ? 0 : 0.035 + index * 0.025,
+                          }}
+                          onClick={onClose}
+                        >
+                          <span
+                            className={`text-xs font-extrabold tabular-nums tracking-[0.12em] ${
+                              isActive ? "text-[var(--accent)]" : "text-[var(--muted)]"
+                            }`}
+                            aria-hidden="true"
+                          >
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <span className="text-[clamp(1.55rem,7vw,2.5rem)] font-extrabold leading-none tracking-[-0.045em]">
+                            {item.label}
+                          </span>
+                          <span
+                            className={`text-[0.6rem] font-bold uppercase tracking-[0.12em] ${
+                              isActive
+                                ? "text-[var(--accent)]"
+                                : "opacity-0 transition-opacity group-hover:opacity-100"
+                            }`}
+                            aria-hidden="true"
+                          >
+                            {isActive ? "Actuel" : "Ouvrir"}
+                          </span>
+                        </m.a>
+                      </li>
+                    );
+                  })}
+                </ol>
+              </nav>
             </div>
-          </m.div>
-        </div>
+
+            <div className="flex min-h-16 shrink-0 items-center justify-between border-t border-[var(--line)] py-3">
+              <span className="text-sm font-medium text-[var(--muted)]">
+                Apparence
+              </span>
+              <ThemeToggle className="size-9 rounded-none border-0 bg-transparent hover:bg-transparent" />
+            </div>
+          </div>
+        </m.div>
       ) : null}
     </AnimatePresence>
   );
